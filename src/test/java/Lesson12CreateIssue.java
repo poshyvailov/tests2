@@ -60,7 +60,7 @@ public class Lesson12CreateIssue {
 
         //Ищем поле Issue Type, чистим его, вводим наши данные, нажимаем табуляцию
         driver.findElement(By.id("issuetype-field")).clear();
-        driver.findElement(By.id("issuetype-field")).sendKeys("Story");
+        driver.findElement(By.id("issuetype-field")).sendKeys("Task");
         driver.findElement(By.id("issuetype-field")).sendKeys(Keys.TAB);
 
         try {
@@ -78,6 +78,10 @@ public class Lesson12CreateIssue {
         boolean checkIfPopUpIsAppeared = wait.until(presenceOfElementLocated(By.id("aui-flag-container"))).isDisplayed();
         assertEquals(checkIfPopUpIsAppeared, true);
 
+        //Проверяем что в поп апе есть названия проекта,в который был создан тикет ("WEBINAR")
+        boolean checkIfPopUpContainsWebinar = wait.until(presenceOfElementLocated(By.xpath("//*[@id='aui-flag-container']//a[contains (text(), 'WEBINAR')]"))).isDisplayed();
+        assertEquals(checkIfPopUpContainsWebinar, true);
+
     }
 
 
@@ -85,6 +89,6 @@ public class Lesson12CreateIssue {
 
     @AfterMethod
     public void tearDown() {
-       // driver.quit();
+        driver.quit();
     }
 }
