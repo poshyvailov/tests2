@@ -12,8 +12,6 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class Lesson12CreateIssue {
 
-
-
     WebDriver driver = null;
 
 
@@ -52,6 +50,7 @@ public class Lesson12CreateIssue {
         driver.findElement(By.id("project-field")).sendKeys("Webinar (WEBINAR)");
         driver.findElement(By.id("project-field")).sendKeys(Keys.TAB);
 
+        //Не работает без тред слип
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -63,6 +62,7 @@ public class Lesson12CreateIssue {
         driver.findElement(By.id("issuetype-field")).sendKeys("Task");
         driver.findElement(By.id("issuetype-field")).sendKeys(Keys.TAB);
 
+        //Не работает без тред слип
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -83,8 +83,6 @@ public class Lesson12CreateIssue {
         assertEquals(checkIfPopUpContainsWebinar, true);
 
     }
-
-
 
 
     @AfterMethod
