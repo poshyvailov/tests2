@@ -31,8 +31,6 @@ public class Lesson12AddCommentTest {
         driver.findElement(By.id("login")).click();
         wait.until(presenceOfElementLocated(By.id("header-details-user-fullname"))).isDisplayed();
 
-        //Без тред слипа тест не дожидается пока мы залогинимся и сразу вводит номер тикета в поиск
-
 
         // Ждем пока появится строка для поиска тикета, потом вводим номер тикета и нажимаем энтер чтобы открыть его
         wait.until(presenceOfElementLocated(By.id("quickSearchInput"))).isDisplayed();
@@ -40,7 +38,7 @@ public class Lesson12AddCommentTest {
         driver.findElement(By.id("quickSearchInput")).sendKeys(Keys.ENTER);
 
 
-        // Проверячем что открылся именно наш тестовый тикет
+        // Проверяем, что открылся именно наш тестовый тикет
         boolean checkIsTicketNameIsPresent = wait.until(presenceOfElementLocated(By.xpath("//a[@class='issue-link' and @data-issue-key='WEBINAR-11939']"))).isDisplayed();
         assertEquals(checkIsTicketNameIsPresent, true);
 
@@ -55,10 +53,28 @@ public class Lesson12AddCommentTest {
         assertEquals(checkIfAddButtonIsActive, true);
 
         // сохраняем коммент и проверяем,что он появился
-        driver.findElement(By.id("checkIfAddButtonIsActive")).click();
+        driver.findElement(By.id("issue-comment-add-submit")).click();
         wait.until(presenceOfElementLocated(By.id("footer-comment-button"))).isDisplayed();
         boolean checkIsCommentExists = wait.until(presenceOfElementLocated(By.xpath("//div[@class='action-body flooded']//p[contains(text(), 'My random comment')]"))).isDisplayed();
         assertEquals(checkIsCommentExists, true);
+
+        //Находим иконку удаления коммента, нажимаем на нее и проверяем что поп ап для удаления коммента открылся
+        driver.findElement(By.xpath("//span[@class='icon-default aui-icon aui-icon-small aui-iconfont-delete']")).click();
+        boolean checkIfDeletePopUpIsPresent = wait.until(presenceOfElementLocated(By.xpath("//h2['Delete Comment']"))).isDisplayed();
+        assertEquals(checkIfDeletePopUpIsPresent, true);
+
+        // Подтверждаем удаление коммента и ждем сообщение об успехе
+        driver.findElement(By.id("comment-delete-submit")).click();
+        boolean checkIfSuccessMessageAppeared = wait.until(presenceOfElementLocated(By.xpath("//div[@class='aui-message closeable aui-message-success aui-will-close']"))).isDisplayed();
+        assertEquals(checkIfSuccessMessageAppeared, true);
+
+        //Проверяем,что наш коммент пропал. Не уверен,что правильно, но мы вроде не обсуждали,как лучше проверять,что элемент пропал
+        boolean check = driver.findElements(By.xpath("//div[@class='action-body flooded']//p[contains(text(), 'My random comment')]")).isEmpty();
+        assertEquals(check, true);
+
+
+
+
 
 
 
