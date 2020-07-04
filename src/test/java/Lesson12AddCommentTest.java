@@ -28,7 +28,7 @@ public class Lesson12AddCommentTest {
         driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
         driver.findElement(By.id("login-form-username")).sendKeys("poshyvailov");
         driver.findElement(By.id("login-form-password")).sendKeys("poshyvailov");
-        driver.findElement(By.id("login")).click();
+        driver.findElement(By.id("login22")).click();
         wait.until(presenceOfElementLocated(By.id("header-details-user-fullname"))).isDisplayed();
 
 
