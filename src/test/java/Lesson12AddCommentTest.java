@@ -34,14 +34,7 @@ public class Lesson12AddCommentTest {
         loginPage.enterUserPassword("poshyvailov");
         loginPage.clickLoginButton();
         assertTrue(mainPage.checkIfMainPageIsOpen());
-
-        // assertTrue(mainPage.isCreateTicketButtonIsActive());
-        // без тред слип не нажимается кнопка Create
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        mainPage.checkIfJiraMainPageIsFullyOpened();
 
         // Ждем пока появится строка для поиска тикета, потом вводим номер тикета и нажимаем энтер чтобы открыть его
         assertTrue(mainPage.waitingWhenSearchFieldWillAppear());
@@ -73,7 +66,7 @@ public class Lesson12AddCommentTest {
         ticketDetails.confirmCommentDelete();
         assertTrue(ticketDetails.checkSuccessDeleteMessage());
 
-        //Проверяем,что наш коммент пропал. Не уверен,что правильно, но мы вроде не обсуждали,как лучше проверять,что элемент пропал
+        //Проверяем,что наш коммент пропал.
         assertEquals(ticketDetails.checkIfCommentIsNotExists() , true);
 
 

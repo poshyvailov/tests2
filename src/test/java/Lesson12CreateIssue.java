@@ -38,13 +38,8 @@ public class Lesson12CreateIssue {
         loginPage.enterUserPassword("poshyvailov");
         loginPage.clickLoginButton();
         assertTrue(mainPage.checkIfMainPageIsOpen());
+        mainPage.checkIfJiraMainPageIsFullyOpened();
 
-        // без тред слип не нажимается кнопка Create
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         //Находим и нажимаем на кнопку Create
         mainPage.clickOnTheCreateButton();
@@ -54,13 +49,7 @@ public class Lesson12CreateIssue {
         createTicketWindow.clearTicketProjectField();
         createTicketWindow.ticketTypeProjectName("Webinar (WEBINAR)");
         createTicketWindow.ticketProjectFieldClickTabButton();
-
-        //Не работает без тред слип
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        createTicketWindow.ticketWaitingForDescriptionWillBeActive();
 
         //Ищем поле Issue Type, чистим его, вводим наши данные, нажимаем табуляцию
         createTicketWindow.ticketClearIssueTypeField();
