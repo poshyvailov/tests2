@@ -18,6 +18,7 @@ public class MainPage {
     }
 
 
+
     private By createButton = By.id("create_link");
     private By searchTicketField = By.id("quickSearchInput");
 

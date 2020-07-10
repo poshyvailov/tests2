@@ -2,12 +2,9 @@ import Pages.LoginPage;
 import Pages.MainPage;
 import Pages.TicketDetails;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -18,7 +15,6 @@ public class Lesson12AddCommentTest {
     LoginPage loginPage;
     TicketDetails ticketDetails;
 
-
     @BeforeMethod
     public void setUp() {
         WebDriverFactory.createInstance("Chrome");
@@ -27,20 +23,18 @@ public class Lesson12AddCommentTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
         ticketDetails = new TicketDetails(driver);
-
     }
 
     @Test
     public void addCommentPositiveTest() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
 
         // Логинимся в систему
         loginPage.openTestPage();
         loginPage.enterUserName("poshyvailov");
         loginPage.enterUserPassword("poshyvailov");
         loginPage.clickLoginButton();
-        //Проверяем,что открылась главная страница и ждем пока create кнопка будет активна
         assertTrue(mainPage.checkIfMainPageIsOpen());
+
         // assertTrue(mainPage.isCreateTicketButtonIsActive());
         // без тред слип не нажимается кнопка Create
         try {
@@ -48,8 +42,6 @@ public class Lesson12AddCommentTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
 
         // Ждем пока появится строка для поиска тикета, потом вводим номер тикета и нажимаем энтер чтобы открыть его
         assertTrue(mainPage.waitingWhenSearchFieldWillAppear());
