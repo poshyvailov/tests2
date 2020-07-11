@@ -24,7 +24,6 @@ public class CreateTicketWindow {
     private By saveTicketButton = By.id("create-issue-submit");
 
 
-
     public void clearTicketProjectField() {
         driver.findElement(ticketProjectField).clear();
     }
@@ -50,7 +49,7 @@ public class CreateTicketWindow {
         driver.findElement(ticketIssueTypeField).sendKeys(Keys.TAB);
     }
 
-    public boolean ticketWaitingForDescriptionWillBeActive(){
+    public boolean ticketWaitingForDescriptionWillBeActive() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(elementToBeClickable(By.id("description"))).isEnabled();
     }
