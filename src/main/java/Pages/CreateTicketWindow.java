@@ -24,6 +24,7 @@ public class CreateTicketWindow {
     private By saveTicketButton = By.id("create-issue-submit");
 
 
+
     public void clearTicketProjectField() {
         driver.findElement(ticketProjectField).clear();
     }

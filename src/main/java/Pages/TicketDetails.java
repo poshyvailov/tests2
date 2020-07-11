@@ -24,6 +24,7 @@ public class TicketDetails {
     private By confirmDeletingCommentButton = By.id("comment-delete-submit");
 
 
+
     public boolean checkIsTicketNameIsPresent() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(presenceOfElementLocated(By.xpath("//a[@class='issue-link' and @data-issue-key='WEBINAR-11939']"))).isDisplayed();
