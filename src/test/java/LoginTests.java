@@ -14,6 +14,7 @@ public class LoginTests {
     LoginPage loginPage;
     MainPage mainPage;
 
+
     @BeforeMethod
     public void setUp() {
         WebDriverFactory.createInstance("Chrome");
@@ -21,6 +22,7 @@ public class LoginTests {
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
+
     }
 
     @DataProvider(name = "Logins")

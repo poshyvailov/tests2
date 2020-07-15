@@ -38,16 +38,15 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
 
-    public boolean waitUntilDashboardWillBeOpen(){
+    public boolean waitUntilDashboardWillBeOpen() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(presenceOfElementLocated(By.xpath("//*[@id='dashboard-content']//h1"))).isDisplayed();
     }
 
-    public boolean isErrorsMessageIsShown(String errorMessage){
+    public boolean isErrorsMessageIsShown(String errorMessage) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(presenceOfElementLocated(By.xpath("//*[contains(text(),'" + errorMessage + "')]"))).isDisplayed();
-}
-
+    }
 
 
 }
