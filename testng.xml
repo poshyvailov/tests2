@@ -2,7 +2,7 @@
 <suite name="My Tests" parallel="false">
 
     <test name="Jira Tests">
-        <parameter name="browserName" value="Crome"/>
+        <parameter name="browserName" value="Firefox"/>
         <classes>
             <class name="LoginTests"/>
             <class name="Lesson12CreateIssue"/>

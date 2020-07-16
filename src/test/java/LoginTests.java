@@ -1,10 +1,7 @@
 import Pages.LoginPage;
 import Pages.MainPage;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -34,6 +31,7 @@ public class LoginTests {
     }
 
 
+
     @Test(dataProvider = "Logins")
     public void loginWithWrongCreds(String userName, String userPass, String expectedResult)throws InterruptedException {
 
@@ -44,9 +42,10 @@ public class LoginTests {
         assertTrue(loginPage.isErrorsMessageIsShown(expectedResult));
     }
 
-
+    @Parameters({"browserName"})
     @Test
-    public void possitiveLoginTest(){
+    public void possitiveLoginTest(String browserName){
+        System.out.println("Browser name from parameters is: " + browserName);
         loginPage.openTestPage();
         loginPage.enterUserName("poshyvailov");
         loginPage.enterUserPassword("poshyvailov");

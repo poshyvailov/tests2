@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.Command;
 import org.openqa.selenium.remote.CommandExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.Response;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
