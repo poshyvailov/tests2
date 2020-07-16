@@ -12,10 +12,9 @@ public class LoginTests {
     MainPage mainPage;
 
 
-    @Parameters({"browserName"})
     @BeforeMethod
-    public void setUp(String browserName) {
-        WebDriverFactory.createInstance(browserName);
+    public void setUp() {
+        WebDriverFactory.createInstance("chrome");
         driver = WebDriverFactory.getDriver();
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
