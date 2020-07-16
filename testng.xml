@@ -4,9 +4,9 @@
     <test name="Jira Tests">
         <parameter name="browserName" value="firefox"/>
         <classes>
-<!--            <class name="LoginTests"/>-->
+            <class name="LoginTests"/>
             <class name="Lesson12CreateIssue"/>
-<!--            <class name="Lesson12AddCommentTest"/>-->
+            <class name="Lesson12AddCommentTest"/>
         </classes>
     </test>
 

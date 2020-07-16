@@ -26,6 +26,12 @@ public class LoginPage {
         driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
     }
 
+    public void waitUntilLoginPageWillBeOpen(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
+        wait.until(presenceOfElementLocated(By.id("login-form-username"))).isDisplayed();
+
+    }
+
     public void enterUserName(String name) {
         driver.findElement(userNameField).sendKeys(name);
     }

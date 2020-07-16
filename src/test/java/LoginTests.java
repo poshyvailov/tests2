@@ -12,9 +12,10 @@ public class LoginTests {
     MainPage mainPage;
 
 
+    @Parameters({"browserName"})
     @BeforeMethod
-    public void setUp() {
-        WebDriverFactory.createInstance("chrome");
+    public void setUp(String browserName) {
+        WebDriverFactory.createInstance(browserName);
         driver = WebDriverFactory.getDriver();
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
@@ -47,6 +48,7 @@ public class LoginTests {
     public void possitiveLoginTest(String browserName){
         System.out.println("Browser name from parameters is: " + browserName);
         loginPage.openTestPage();
+        loginPage.waitUntilLoginPageWillBeOpen();
         loginPage.enterUserName("poshyvailov");
         loginPage.enterUserPassword("poshyvailov");
         loginPage.clickLoginButton();
