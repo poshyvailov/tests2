@@ -1,3 +1,17 @@
-<listeners>
-    <listener class-name="utils.TestNGListener"/>
-</listeners>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Tests" parallel="false">
+
+    <test name="Jira Tests">
+        <parameter name="browserName" value="Crome"/>
+        <classes>
+            <class name="LoginTests"/>
+            <class name="Lesson12CreateIssue"/>
+            <class name="Lesson12AddCommentTest"/>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="TestNGListener"/>
+    </listeners>
+
+</suite>
