@@ -53,6 +53,7 @@ public class LoginTests {
         loginPage.enterUserPassword("poshyvailov");
         loginPage.clickLoginButton();
         assertTrue(loginPage.waitUntilDashboardWillBeOpen());
+
     }
 
 
