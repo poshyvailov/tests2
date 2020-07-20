@@ -13,7 +13,7 @@ public class EmptyTest2 {
 
     @Test
     public void emptyTestSteps(){
-        assert 1!=0;
+        assert 1==0;
         System.out.println("Test method from EmptyTest2 is working now");
 
 

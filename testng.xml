@@ -7,8 +7,8 @@
 <!--            <class name="LoginTests"/>-->
 <!--            <class name="Lesson12CreateIssue"/>-->
 <!--            <class name="Lesson12AddCommentTest"/>-->
-            <class name="Lesson12CreateIssue"/>
-            <class name="Lesson12AddCommentTest"/>
+            <class name="EmptyTest1"/>
+            <class name="EmptyTest2"/>
         </classes>
     </test>
 
