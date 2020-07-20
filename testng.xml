@@ -1,12 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="My Tests" parallel="false">
+<suite name="My Tests" parallel="classes" thread-count="2">
 
     <test name="Jira Tests">
         <parameter name="browserName" value="chrome"/>
         <classes>
+<!--            <class name="LoginTests"/>-->
+<!--            <class name="Lesson12CreateIssue"/>-->
+<!--            <class name="Lesson12AddCommentTest"/>-->
             <class name="LoginTests"/>
-            <class name="Lesson12CreateIssue"/>
-            <class name="Lesson12AddCommentTest"/>
+            <class name="EmptyTest2"/>
         </classes>
     </test>
 
