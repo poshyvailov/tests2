@@ -2,12 +2,9 @@ import Pages.CreateTicketWindow;
 import Pages.LoginPage;
 import Pages.MainPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -20,6 +17,8 @@ public class Lesson12CreateIssue {
     CreateTicketWindow createTicketWindow;
 
 
+
+
     @BeforeMethod
     public void setUp() {
         WebDriverFactory.createInstance("Chrome");
@@ -28,12 +27,11 @@ public class Lesson12CreateIssue {
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
         createTicketWindow = new CreateTicketWindow(driver);
-
     }
 
     @Test
     public void createIssueSteps() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
+//       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
 
         loginPage.openTestPage();
         loginPage.enterUserName("poshyvailov");
