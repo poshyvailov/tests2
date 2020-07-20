@@ -22,6 +22,5 @@ public class EmptyTest2 {
     @AfterMethod
     public void tearDown(){
         System.out.println("AfterMethod from EmptyTest2 is working now");
-
     }
 }
