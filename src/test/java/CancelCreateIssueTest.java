@@ -52,7 +52,7 @@ public class CancelCreateIssueTest {
         //Сликаем на отмену и подтверждаем отмену в алерт сообщении
         createTicketWindow.clickOnTheCancelButton();
         createTicketWindow.clickOnTheOkInAlertMessage();
-        //Проверяем,что create ticket pop-up уже не отобрадаетс яна странице
+        //Проверяем,что create ticket pop-up уже не отобрадается на странице
         assertTrue(mainPage.checkIfCreateTicketPopUpIsNotOpen());
 
 
