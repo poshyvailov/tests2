@@ -21,7 +21,6 @@ public class LoginTests {
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
-
     }
 
     @DataProvider(name = "Logins")

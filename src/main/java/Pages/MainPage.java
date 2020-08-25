@@ -4,8 +4,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class MainPage {
     WebDriver driver = null;
@@ -17,6 +17,7 @@ public class MainPage {
 
     private By createButton = By.id("create_link");
     private By searchTicketField = By.id("quickSearchInput");
+    private By createTicketPopUp = By.xpath("//h2[@title='Create Issue' and contains (text(), 'Create Issue')]");
 
 
 
@@ -41,6 +42,8 @@ public class MainPage {
     }
 
     public void clickOnTheCreateButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
+        wait.until(elementToBeClickable(createButton)).isEnabled();
         driver.findElement(createButton).click();
     }
 
@@ -60,6 +63,11 @@ public class MainPage {
 
     public void pressEnterForSearchField() {
         driver.findElement(searchTicketField).sendKeys(Keys.ENTER);
+    }
+
+    public boolean checkIfCreateTicketPopUpIsNotOpen(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
+        return wait.until(invisibilityOfElementLocated(createTicketPopUp));
     }
 
 

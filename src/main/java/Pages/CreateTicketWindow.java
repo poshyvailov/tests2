@@ -22,6 +22,7 @@ public class CreateTicketWindow {
     private By ticketIssueTypeField = By.id("issuetype-field");
     private By ticketSummaryField = By.id("summary");
     private By saveTicketButton = By.id("create-issue-submit");
+    private By createTicketCancelButton = By.xpath("//a[@class='cancel' and contains (text(), 'Cancel')]");
 
 
     public void clearTicketProjectField() {
@@ -70,9 +71,17 @@ public class CreateTicketWindow {
     public boolean checkIfPopUpContainsWebinarName() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(presenceOfElementLocated(By.xpath("//*[@id='aui-flag-container']//a[contains (text(), 'WEBINAR')]"))).isDisplayed();
-
-
     }
+
+    public void clickOnTheCancelButton(){
+        driver.findElement(createTicketCancelButton).click();
+    }
+
+    public void clickOnTheOkInAlertMessage(){
+        driver.switchTo().alert().accept();
+    }
+
+
 
 
 }
