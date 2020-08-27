@@ -3,13 +3,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static org.testng.AssertJUnit.assertTrue;
 
 public class SwipeBoxes {
 
     WebDriver driver;
-
     DragAndDropDemoPage dragAndDropDemoPage;
 
 
@@ -19,23 +17,20 @@ public class SwipeBoxes {
         driver = WebDriverFactory.getDriver();
         dragAndDropDemoPage = new DragAndDropDemoPage(WebDriverFactory.getDriver());
         driver.manage().window().maximize();
-
     }
 
     @Test
     public void DragAndDropTest(){
-
         dragAndDropDemoPage.openDragAndDropTestPage();
         assertTrue(dragAndDropDemoPage.checkIfDemoPageIsOpen());
-        //Проверяем что изначально левый квадрат содержит в себе элемент А
-        assertTrue(dragAndDropDemoPage.checkIsLeftBoxContainA());
-        //Проверяем что изначально правй квадрат содержит в себе элемент B
-        assertTrue(dragAndDropDemoPage.checkIsRightBoxContainB());
-        //перемещаем левый квадрат в правый
-        dragAndDropDemoPage.moveLeftBoxToTheRightBox();
-        //Проверяем что теперь значение В хранится в левом квадрате
-        assertTrue(dragAndDropDemoPage.checkIfRightBoxContainsASign());
-
+        //Проверяем что наш большой круг ( зона куда будем бросать маленький круг ) не содержит, сейчас, в себе маленький круг
+        assertTrue(dragAndDropDemoPage.checkIsBigCircleDoesntContainLittleCircleInside());
+        //Проверяем что маленький круг ( элемент,который будем перетаскивать ) - существует
+        assertTrue(dragAndDropDemoPage.checkIsSmallCircleExists());
+        //Перетаскиваем маленький круг в большой круг
+        dragAndDropDemoPage.moveSmallCircleToTheBigCircle();
+        //Проверяем что наш большой круг содержит в себе маленький
+        assertTrue(dragAndDropDemoPage.checkIfSmallCircleInsideTheBIgCircle());
     }
 
     @AfterMethod

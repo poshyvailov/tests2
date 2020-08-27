@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class DragAndDropDemoPage {
@@ -21,40 +20,36 @@ public class DragAndDropDemoPage {
     }
 
 
-//    private By leftBoxSource = By.id("column-a");
-//    private By rightBoxTarget = By.id("column-b");
-
-
     public void openDragAndDropTestPage() {
-        driver.get("http://the-internet.herokuapp.com/drag_and_drop");
+        driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
     }
 
 
     public boolean checkIfDemoPageIsOpen() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
-        return wait.until(presenceOfElementLocated(By.xpath("//h3[contains (text(), 'Drag and Drop')]"))).isDisplayed();
+        return wait.until(presenceOfElementLocated(By.xpath("//a[@title='Drag and Drop']"))).isDisplayed();
     }
 
-    public boolean checkIsLeftBoxContainA() {
+    public boolean checkIsBigCircleDoesntContainLittleCircleInside() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
-        return wait.until(presenceOfElementLocated(By.xpath("//div[@id='column-a']/header[contains(text(),'A')]"))).isDisplayed();
+        return wait.until(presenceOfElementLocated(By.xpath("//div[@id='droptarget' and contains (text(), 'Drag the small circle here.')]"))).isDisplayed();
     }
 
-    public boolean checkIsRightBoxContainB() {
+    public boolean checkIsSmallCircleExists() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
-        return wait.until(presenceOfElementLocated(By.xpath("//div[@id='column-b']/header[contains(text(),'B')]"))).isDisplayed();
+        return wait.until(presenceOfElementLocated(By.id("draggable"))).isDisplayed();
     }
 
-    public void moveLeftBoxToTheRightBox() {
-        WebElement source = driver.findElement(By.id("column-a"));
-        WebElement target = driver.findElement(By.id("column-b"));
+    public void moveSmallCircleToTheBigCircle() {
+        WebElement source = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("droptarget"));
         Actions action = new Actions(driver);
         action.dragAndDrop(source, target).build().perform();
     }
 
-    public boolean checkIfRightBoxContainsASign() {
+    public boolean checkIfSmallCircleInsideTheBIgCircle() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
-        return wait.until(invisibilityOfElementLocated(By.xpath("//div[@id='column-a']/header[contains(text(),'B')]")));
+        return wait.until(presenceOfElementLocated(By.xpath("//div[@id='droptarget' and contains (text(), 'You did great!')]"))).isDisplayed();
     }
 
 }
