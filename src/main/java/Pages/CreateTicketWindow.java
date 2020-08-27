@@ -73,15 +73,13 @@ public class CreateTicketWindow {
         return wait.until(presenceOfElementLocated(By.xpath("//*[@id='aui-flag-container']//a[contains (text(), 'WEBINAR')]"))).isDisplayed();
     }
 
-    public void clickOnTheCancelButton(){
+    public void clickOnTheCancelButton() {
         driver.findElement(createTicketCancelButton).click();
     }
 
-    public void clickOnTheOkInAlertMessage(){
+    public void clickOnTheOkInAlertMessage() {
         driver.switchTo().alert().accept();
     }
-
-
 
 
 }

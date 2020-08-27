@@ -1,8 +1,10 @@
 package Pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -18,7 +20,6 @@ public class MainPage {
     private By createButton = By.id("create_link");
     private By searchTicketField = By.id("quickSearchInput");
     private By createTicketPopUp = By.xpath("//h2[@title='Create Issue' and contains (text(), 'Create Issue')]");
-
 
 
     public boolean checkIfMainPageIsOpen() {
@@ -65,7 +66,7 @@ public class MainPage {
         driver.findElement(searchTicketField).sendKeys(Keys.ENTER);
     }
 
-    public boolean checkIfCreateTicketPopUpIsNotOpen(){
+    public boolean checkIfCreateTicketPopUpIsNotOpen() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15).getSeconds());
         return wait.until(invisibilityOfElementLocated(createTicketPopUp));
     }
