@@ -31,13 +31,7 @@ public class SwipeBoxes {
         assertTrue(dragAndDropDemoPage.checkIsLeftBoxContainA());
         //Проверяем что изначально правй квадрат содержит в себе элемент B
         assertTrue(dragAndDropDemoPage.checkIsRightBoxContainB());
-
         //перемещаем левый квадрат в правый
-//        WebElement dragArea = driver.findElement(By.id("column-a"));
-//        WebElement dragTo = driver.findElement(By.id("column-b"));
-//        (new Actions(driver)).dragAndDrop(dragArea, dragTo).perform();
-//        new Actions(driver).clickAndHold(dragArea).moveToElement(dragTo).release().build().perform();
-
         dragAndDropDemoPage.moveLeftBoxToTheRightBox();
         //Проверяем что теперь значение В хранится в левом квадрате
         assertTrue(dragAndDropDemoPage.checkIfRightBoxContainsASign());

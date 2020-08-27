@@ -21,11 +21,8 @@ public class DragAndDropDemoPage {
     }
 
 
-    private By leftBoxSource = By.id("column-a");
-    private By rightBoxTarget = By.id("column-b");
-
-//   private WebElement source = driver.findElement(By.id("column-a"));
-//   private WebElement target = driver.findElement(By.id("column-b"));
+//    private By leftBoxSource = By.id("column-a");
+//    private By rightBoxTarget = By.id("column-b");
 
 
     public void openDragAndDropTestPage() {
@@ -49,8 +46,10 @@ public class DragAndDropDemoPage {
     }
 
     public void moveLeftBoxToTheRightBox() {
+        WebElement source = driver.findElement(By.id("column-a"));
+        WebElement target = driver.findElement(By.id("column-b"));
         Actions action = new Actions(driver);
-        action.dragAndDrop(leftBoxSource, rightBoxTarget).build().perform();
+        action.dragAndDrop(source, target).build().perform();
     }
 
     public boolean checkIfRightBoxContainsASign() {
